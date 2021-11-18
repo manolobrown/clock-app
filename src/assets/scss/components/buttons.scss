@@ -1,0 +1,33 @@
+@use "../util" as *;
+.btn {
+  background-color: var(--white);
+  color: hsl(0, 0%, 0%, 50%);
+  font-size: rem(12);
+  font-weight: 700;
+
+  line-height: rem(14);
+  letter-spacing: rem(3.75);
+  text-transform: uppercase;
+
+  border-radius: rem(28);
+  padding: rem(5) rem(5) rem(5) rem(15);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: rem(115);
+  margin: rem(40) 0;
+
+  @include breakpoint(medium) {
+    max-width: rem(146);
+    font-size: rem(16);
+    letter-spacing: rem(5);
+    padding: rem(8) rem(8) rem(8) rem(20);
+  }
+
+  @include breakpoint(large) {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}

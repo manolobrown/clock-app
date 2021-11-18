@@ -1,0 +1,132 @@
+@use "../util" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: rem(12);
+  line-height: rem(22);
+}
+
+h1 {
+  font-size: rem(100);
+  letter-spacing: rem(-2.5);
+  line-height: rem(100);
+}
+
+h2 {
+  font-size: rem(20);
+}
+
+h3 {
+  font-size: rem(15);
+  line-height: rem(28);
+  letter-spacing: rem(3);
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: rem(15);
+  line-height: rem(25);
+  letter-spacing: rem(3);
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: rem(18);
+  line-height: rem(28);
+}
+
+h6 {
+  font-size: rem(10);
+  line-height: rem(28);
+  letter-spacing: rem(2);
+}
+
+@include breakpoint(medium) {
+  body {
+    font-size: rem(18);
+    line-height: rem(28);
+  }
+  h1 {
+    font-size: rem(175);
+    line-height: rem(175);
+    letter-spacing: rem(-4.38);
+  }
+  h2 {
+    font-size: rem(40);
+  }
+  h3 {
+    font-size: rem(18);
+    letter-spacing: rem(3.6);
+  }
+  h4 {
+    font-size: rem(18);
+    line-height: rem(28);
+    letter-spacing: rem(3.6);
+  }
+  h6 {
+    font-size: rem(13);
+    letter-spacing: rem(2.6);
+  }
+}
+
+@include breakpoint(large) {
+  h1 {
+    font-size: rem(200);
+    letter-spacing: rem(-5);
+  }
+
+  h2 {
+    font-size: rem(56);
+    line-height: rem(68);
+  }
+
+  h3 {
+    font-size: rem(24);
+    line-height: rem(28);
+    letter-spacing: rem(4.8);
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-size: rem(20);
+    line-height: rem(28);
+    letter-spacing: rem(4);
+    text-transform: uppercase;
+  }
+
+  h5 {
+    font-size: rem(18);
+    line-height: rem(28);
+  }
+
+  h6 {
+    font-size: rem(15);
+    line-height: rem(28);
+    letter-spacing: rem(3);
+  }
+}

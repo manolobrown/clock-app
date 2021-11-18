@@ -1,0 +1,44 @@
+@use "../util" as *;
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  padding: rem(24) rem(24) 0 rem(24);
+  max-width: rem(1110);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transform: translate(0, 0);
+
+  @include breakpoint(medium) {
+    padding: rem(64) rem(64) 0 rem(64);
+  }
+
+  @include breakpoint(large) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: rem(64);
+  }
+}
+
+body {
+  background-image: url("/images/mobile/bg-image-daytime.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  color: var(--white);
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: hsl(0, 0%, 0%, 40%);
+    z-index: -1;
+  }
+}
