@@ -1,5 +1,9 @@
 <script setup>
 import { ref } from "vue";
+
+const props = defineProps({
+  timeValues: Object,
+});
 </script>
 
 <template>
@@ -9,9 +13,11 @@ import { ref } from "vue";
     </div>
     <div class="utc">
       <h1>11:37</h1>
-      <div class="standard">BST</div>
+      <div class="standard">{{ timeValues.abbreviation }}</div>
     </div>
-    <div class="zone"><h3>In London, UK</h3></div>
+    <div class="zone">
+      <h3>In {{ timeValues.timezone }}</h3>
+    </div>
   </div>
 </template>
 

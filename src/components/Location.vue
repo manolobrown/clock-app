@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+const props = defineProps({
+  timeValues: Object,
+});
 </script>
 
 <template>
@@ -7,19 +10,19 @@ import { ref } from "vue";
     <div class="location__wrapper">
       <div class="timezone">
         <h6>Current Timezone</h6>
-        <h2>Europe/London</h2>
+        <h2>{{ timeValues.timezone }}</h2>
       </div>
       <div class="day-of-year">
         <h6>Day of the year</h6>
-        <h2>295</h2>
+        <h2>{{ timeValues.day_of_year }}</h2>
       </div>
       <div class="day-of-week">
         <h6>Day of the week</h6>
-        <h2>5</h2>
+        <h2>{{ timeValues.day_of_week }}</h2>
       </div>
       <div class="week-number">
         <h6>Week number</h6>
-        <h2>42</h2>
+        <h2>{{ timeValues.week_number }}</h2>
       </div>
     </div>
   </div>

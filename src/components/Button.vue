@@ -1,10 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
+
+const props = defineProps({
+  txt: String,
+  location: String,
+  imgPath: String,
+});
 </script>
 
 <template>
-  <a href="#" class="btn"
-    >More <img src="/images/desktop/icon-arrow-down.svg" alt=""
+  <a :href="props.location" class="btn"
+    >{{ props.txt }} <img :src="props.imgPath" alt=""
   /></a>
 </template>
 
