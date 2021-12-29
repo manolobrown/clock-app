@@ -1,22 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 
 const props = defineProps({
   timeValues: Object,
+  locations: Object,
+  txt: String,
+  imgPath: String,
 });
 </script>
 
 <template>
   <div class="time">
     <div class="time-of-day">
-      <h4><img src="/images/desktop/icon-sun.svg" alt="" /> Good Morning</h4>
+      <h4><img :src="props.imgPath" alt="" /> Good {{ props.txt }}</h4>
     </div>
     <div class="utc">
       <h1>11:37</h1>
       <div class="standard">{{ timeValues.abbreviation }}</div>
     </div>
     <div class="zone">
-      <h3>In {{ timeValues.timezone }}</h3>
+      <h3>In {{ locations.city }}, {{ locations.region_code }}</h3>
     </div>
   </div>
 </template>

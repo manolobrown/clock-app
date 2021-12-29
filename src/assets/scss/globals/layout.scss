@@ -3,6 +3,7 @@
 html,
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -34,11 +35,23 @@ body {
   height: 100vh;
   color: var(--white);
 
+  &.night {
+    background-image: url("/images/mobile/bg-image-nighttime.jpg");
+  }
+
   &:after {
     content: "";
     position: absolute;
     inset: 0;
     background-color: hsl(0, 0%, 0%, 40%);
     z-index: -1;
+  }
+
+  @include breakpoint(medium) {
+    background-image: url("/images/desktop/bg-image-daytime.jpg");
+
+    &.night {
+      background-image: url("/images/desktop/bg-image-nighttime.jpg");
+    }
   }
 }

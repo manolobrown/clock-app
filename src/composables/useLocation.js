@@ -1,17 +1,17 @@
 import { ref } from "vue";
 
 export default function useLocation() {
-  const location = ref([]);
+  const locations = ref([]);
 
-  const fetchAll = async () => {
+  const fetchAllLocations = async () => {
     const response = await fetch(
-      "https://api.freegeoip.app/json/?apikey=XXXXXXXXXXXXXX"
+      "https://api.freegeoip.app/json/?apikey=2ac58b60-68b1-11ec-a8dc-c5381b826ec6"
     );
-    location.value = await response.json();
+    locations.value = await response.json();
   };
 
   return {
-    location,
-    fetchAll,
+    locations,
+    fetchAllLocations,
   };
 }

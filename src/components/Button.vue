@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <a :href="props.location" class="btn"
+  <a :href="`#${props.location}`" class="btn"
     >{{ props.txt }} <img :src="props.imgPath" alt=""
   /></a>
 </template>

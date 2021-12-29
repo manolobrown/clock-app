@@ -1,23 +1,24 @@
 <script setup>
 import { ref } from "vue";
 
-const quote = {
-  message:
-    "The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.",
-  by: "Ada Lovelace",
-};
+const props = defineProps({
+  quotes: Object,
+});
 </script>
 
 <template>
   <div class="quote">
     <div class="message">
-      {{ quote.message }}
-      <a href="#" class="refresh"
-        ><img src="/images/desktop/icon-refresh.svg" alt=""
-      /></a>
+      <span>
+        {{ quotes.content }}
+      </span>
+
+      <button @click="$emit('get-quote')" class="refresh">
+        <img src="/images/desktop/icon-refresh.svg" alt="" />
+      </button>
     </div>
     <div class="by">
-      <strong>{{ quote.by }}</strong>
+      <strong>{{ quotes.author }}</strong>
     </div>
   </div>
 </template>
@@ -28,15 +29,33 @@ const quote = {
   .message {
     margin-block-end: rem(10);
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  span {
+    padding-right: rem(5);
+  }
+
+  .refresh {
+    position: relative;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.5;
+
+    transition: 0.2s opacity ease-in-out;
+
+    top: 6px;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   @include breakpoint(medium) {
     width: 50ch;
-
-    .refresh {
-      position: relative;
-      right: rem(-10);
-    }
   }
 }
 </style>

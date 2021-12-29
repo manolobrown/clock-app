@@ -10,19 +10,21 @@ const props = defineProps({
     <div class="location__wrapper">
       <div class="timezone">
         <h6>Current Timezone</h6>
-        <h2>{{ timeValues.timezone }}</h2>
+        <h2 v-if="props.timeValues.timezone">
+          {{ props.timeValues.timezone.replace("_", " ") }}
+        </h2>
       </div>
       <div class="day-of-year">
         <h6>Day of the year</h6>
-        <h2>{{ timeValues.day_of_year }}</h2>
+        <h2>{{ props.timeValues.day_of_year }}</h2>
       </div>
       <div class="day-of-week">
         <h6>Day of the week</h6>
-        <h2>{{ timeValues.day_of_week }}</h2>
+        <h2>{{ props.timeValues.day_of_week }}</h2>
       </div>
       <div class="week-number">
         <h6>Week number</h6>
-        <h2>{{ timeValues.week_number }}</h2>
+        <h2>{{ props.timeValues.week_number }}</h2>
       </div>
     </div>
   </div>
@@ -32,14 +34,30 @@ const props = defineProps({
 @use "../assets/scss/util" as *;
 
 .location {
-  padding: rem(24);
   color: var(--blackv2);
   position: relative;
   background: rgba(255, 255, 255, 0.75);
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+
+  transition: 0.2s all ease-in-out;
+
+  .night & {
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--white) !important;
+  }
+
+  &.active {
+    height: auto;
+    visibility: visible;
+    overflow: visible;
+  }
 
   &__wrapper {
-    max-width: rem(1100);
+    max-width: rem(1110);
     margin: 0 auto;
+    padding: rem(24);
     > div {
       display: flex;
       justify-content: space-between;
@@ -59,14 +77,34 @@ const props = defineProps({
   @include breakpoint(medium) {
     &__wrapper {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, max-content);
       gap: rem(60) rem(80);
+      position: relative;
+      padding: rem(64);
     }
-
-    padding: rem(64);
 
     &__wrapper > div {
       display: block;
+    }
+  }
+
+  @include breakpoint(large) {
+    &__wrapper {
+      gap: rem(60) rem(200);
+      &:after {
+        content: "";
+        height: 100%;
+        max-height: rem(250);
+        top: rem(64);
+        width: 1px;
+        background-color: var(--blackv2);
+        position: absolute;
+        left: 60%;
+      }
+    }
+
+    .night & &__wrapper:after {
+      background-color: var(--white);
     }
   }
 }
