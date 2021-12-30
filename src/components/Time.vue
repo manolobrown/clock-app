@@ -52,6 +52,9 @@ h4 {
   }
 }
 @include breakpoint(large) {
+  .time {
+    flex: 0 0 50%;
+  }
   .standard {
     font-size: rem(40);
   }

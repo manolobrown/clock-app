@@ -35,13 +35,12 @@ const props = defineProps({
 
 .location {
   color: var(--blackv2);
-  position: relative;
   background: rgba(255, 255, 255, 0.75);
   height: 0;
   visibility: hidden;
   overflow: hidden;
 
-  transition: 0.2s all ease-in-out;
+  transition: 200ms height ease-in-out;
 
   .night & {
     background: rgba(0, 0, 0, 0.75);
@@ -49,9 +48,10 @@ const props = defineProps({
   }
 
   &.active {
-    height: auto;
+    height: 100%;
     visibility: visible;
     overflow: visible;
+    max-height: 380px;
   }
 
   &__wrapper {
@@ -89,6 +89,8 @@ const props = defineProps({
   }
 
   @include breakpoint(large) {
+    reposition: relative;
+    z-index: 1;
     &__wrapper {
       gap: rem(60) rem(200);
       &:after {
