@@ -41,10 +41,6 @@ const { items: quotes, fetchAll: fetchQuote } = useResource(
   "https://api.quotable.io/random"
 );
 
-const { items: sunData, fetchAll: fetchSunData } = useResource(
-  `https://api.sunrise-sunset.org/json?lat=${locations.value.latitude}&lng=${locations.value.longitude}&date=today`
-);
-
 fetchAllLocations();
 fetchQuote();
 
@@ -64,29 +60,25 @@ let timeStatus = ref(false);
 let timeStatusTxt = ref("Morning");
 
 (async () => {
-  await fetchSunData();
   await fetchTime();
 
   const getDate = new Date();
   const getHours = getDate.getHours();
-  const getTime = getDate.toLocaleTimeString();
-  const getSunset = sunData.value.results.sunset;
   const body = document.querySelector("body");
 
-  if (getHours > 12 && getTime < getSunset) {
+  if (getHours > 5 && getHours < 12) {
     body.classList.add("day");
     timeStatus.value = true;
-    timeStatusTxt.value = "Afternoon";
-  } else if (getTime < getSunset) {
-    timeStatus.value = true;
-    body.classList.add("day");
     timeStatusTxt.value = "Morning";
+  } else if (getHours > 12 && getHours < 18) {
+    timeStatus.value = true;
+    body.classList.add("day");
+    timeStatusTxt.value = "Afternoon";
   } else {
     body.classList.add("night");
   }
 
-  const getCurrentTime = new Date(timeValues.value.datetime);
-  const newTime = getCurrentTime
+  const newTime = getDate
     .toLocaleTimeString([], {
       hour: "numeric",
       minute: "2-digit",
