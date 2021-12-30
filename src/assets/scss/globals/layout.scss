@@ -11,7 +11,6 @@ body {
   max-width: rem(1110);
   margin: 0 auto;
   height: 100%;
-  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   transform: translate(0, 0);
@@ -34,7 +33,6 @@ body {
   background-size: cover;
   position: relative;
   height: 100vh;
-  height: -webkit-fill-available;
   color: var(--white);
 
   &.night {
@@ -55,5 +53,17 @@ body {
     &.night {
       background-image: url("/images/desktop/bg-image-nighttime.jpg");
     }
+  }
+}
+
+#app {
+  height: 100%;
+}
+
+@include breakpoint-down(small) {
+  body,
+  .container,
+  #app {
+    height: -webkit-fill-available;
   }
 }
